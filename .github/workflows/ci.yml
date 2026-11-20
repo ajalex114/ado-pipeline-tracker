@@ -25,9 +25,15 @@ jobs:
           registry-url: https://registry.npmjs.org
       - name: Install dependencies
         run: npm ci --registry=https://registry.npmjs.org --no-audit --no-fund
-      - name: Build
-        run: npm run build
+      - name: Build store upload package
+        run: npm run package
       - name: Lint
         run: npm run lint
       - name: Test
         run: npm test
+      - name: Upload store package
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4.6.2
+        with:
+          name: extension-store-package
+          path: release/*.zip
+          if-no-files-found: error

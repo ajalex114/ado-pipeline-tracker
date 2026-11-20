@@ -87,6 +87,7 @@ Any behavior change must update this document in the same change.
 - Do not store credentials or tokens.
 - Store only non-sensitive metadata needed for tracking and UX.
 - Logs must not include sensitive information.
+- Settings links to the public privacy policy, which documents local build metadata and history storage, browser-session authentication, Azure DevOps requests, console diagnostics, and deletion controls. Usage counters remain in memory; no analytics are sent to the developer.
 
 ## 9. Error behavior
 

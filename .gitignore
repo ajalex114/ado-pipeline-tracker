@@ -1,5 +1,6 @@
 node_modules/
 dist/
+release/
 .playwright-mcp/
 *.log
 .DS_Store

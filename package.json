@@ -8,6 +8,8 @@
   "scripts": {
     "dev": "vite build --watch --mode development",
     "build": "tsc --noEmit && vite build",
+    "package": "npm run build && node scripts/package-extension.mjs",
+    "store:assets": "npm run build && node scripts/generate-store-assets.mjs",
     "typecheck": "tsc --noEmit",
     "test": "vitest run",
     "test:watch": "vitest",
@@ -29,7 +31,9 @@
     "eslint": "^8.57.1",
     "eslint-plugin-react": "^7.37.2",
     "eslint-plugin-react-hooks": "^4.6.2",
+    "fflate": "0.8.2",
     "jsdom": "^25.0.1",
+    "playwright": "1.58.2",
     "prettier": "^3.3.3",
     "typescript": "^5.6.3",
     "vite": "^5.4.11",

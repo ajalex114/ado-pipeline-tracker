@@ -28,12 +28,14 @@ Built with **TypeScript + React + Vite** on **Manifest V3**.
 
 ## Project docs
 
-| Doc | Purpose |
-| --- | --- |
-| `docs/spec.md` | Product & technical spec (interview outcome) |
-| `docs/behavior.md` | Canonical behavior reference — consult/update on every change |
-| `docs/interview-memory.md` | Full interview Q&A history |
-| `.github/copilot-instructions.md` | Engineering standards for this repo |
+| Doc                               | Purpose                                                                      |
+| --------------------------------- | ---------------------------------------------------------------------------- |
+| `docs/spec.md`                    | Product & technical spec (interview outcome)                                 |
+| `docs/behavior.md`                | Canonical behavior reference — consult/update on every change                |
+| `docs/interview-memory.md`        | Full interview Q&A history                                                   |
+| `.github/copilot-instructions.md` | Engineering standards for this repo                                          |
+| `PRIVACY_POLICY.md`               | Public privacy policy for Chrome and Edge store listings                     |
+| `store/listing.md`                | Store descriptions, permission justifications, artwork, and submission steps |
 
 ## Getting started
 
@@ -77,7 +79,7 @@ Before pushing, review the staged files and include only this project's source.
 Browser captures in `.playwright-mcp/` can contain session tokens and internal
 metadata; that directory, local environment files, logs, `node_modules/`, and
 `dist/` are excluded from Git. Do not force-add them or share the whole working
-directory as an archive. For a store upload, package only the contents of `dist/`.
+directory as an archive. For a store upload, use `npm run package` to create a runtime-only ZIP in `release/`.
 
 ## Architecture
 
@@ -109,13 +111,22 @@ Design notes:
 - **Least privilege**: only `storage`, `notifications`, `alarms`, and `tabs` permissions, scoped to
   Azure DevOps hosts.
 
-## Publishing checklist (Edge Add-ons / Chrome Web Store)
+## Publishing (Edge Add-ons / Chrome Web Store)
 
-- [ ] `npm run build` produces a clean `dist/`.
-- [ ] Bump `version` in `src/manifest.json` and `package.json`.
-- [ ] Provide store listing assets (screenshots, promo tiles) and a privacy policy describing the
-      "no credentials stored, session-based, metadata-only" model.
-- [ ] Zip the **contents of `dist/`** (manifest at the zip root) for upload.
+```bash
+npm run package    # build + validated runtime-only ZIP under release/
+```
+
+Use the [store submission reference](store/listing.md) for copy-ready listing
+text, privacy disclosures, reviewer notes, and upload instructions. PNG logos,
+promotional tiles, and fictional-data screenshots are in `store/assets/`.
+Screenshot generation uses a fresh isolated browser and never your existing
+profile or deployment. See the [privacy policy](PRIVACY_POLICY.md) for the actual
+data practices; build metadata is stored locally, not "no data stored".
+
+The initial store version is 1.0.0. For updates, increment both `package.json`
+and `src/manifest.json`. Upload the generated ZIP to each store and the listing
+images separately. Store approval and developer-account setup are manual.
 
 ## License
 

@@ -2,6 +2,7 @@
   "manifest_version": 3,
   "name": "ADO Pipeline Tracker",
   "version": "1.0.0",
+  "homepage_url": "https://github.com/ajalex114/ado-pipeline-tracker",
   "description": "Track specific Azure DevOps build runs with live stage progress and desktop notifications on completion or failure.",
   "minimum_chrome_version": "116",
   "icons": {
@@ -36,17 +37,9 @@
       "description": "Track the Azure DevOps build run on the current page and open the popup"
     }
   },
-  "permissions": [
-    "storage",
-    "notifications",
-    "alarms",
-    "tabs"
-  ],
+  "permissions": ["storage", "notifications", "alarms", "tabs"],
   "content_security_policy": {
     "extension_pages": "script-src 'self'; object-src 'self'"
   },
-  "host_permissions": [
-    "https://dev.azure.com/*",
-    "https://*.visualstudio.com/*"
-  ]
+  "host_permissions": ["https://dev.azure.com/*", "https://*.visualstudio.com/*"]
 }

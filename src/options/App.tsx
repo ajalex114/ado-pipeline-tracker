@@ -8,10 +8,22 @@ const NOTIFICATION_OPTIONS: Array<{
   label: string;
   desc: string;
 }> = [
-  { key: 'stageCompleted', label: 'Stage completed', desc: 'Notify when a stage finishes successfully.' },
+  {
+    key: 'stageCompleted',
+    label: 'Stage completed',
+    desc: 'Notify when a stage finishes successfully.',
+  },
   { key: 'stageFailed', label: 'Stage failed', desc: 'Notify when a stage fails or is canceled.' },
-  { key: 'pipelineCompleted', label: 'Build completed', desc: 'Notify when the whole build finishes.' },
-  { key: 'pipelineFailed', label: 'Build failed', desc: 'Notify when the build fails or is canceled.' },
+  {
+    key: 'pipelineCompleted',
+    label: 'Build completed',
+    desc: 'Notify when the whole build finishes.',
+  },
+  {
+    key: 'pipelineFailed',
+    label: 'Build failed',
+    desc: 'Notify when the build fails or is canceled.',
+  },
 ];
 
 const IN_BROWSER_OPTIONS: Array<{
@@ -146,7 +158,7 @@ export function App(): JSX.Element {
         <h2>Keyboard shortcut</h2>
         <ul className="info-list">
           <li>
-            Default shortcut to track the build on the current page: <code>Alt+Shift+B</code>.
+            Default shortcut to track the build on the current page: <code>Alt+Shift+T</code>.
           </li>
           <li>
             Change it at <code>edge://extensions/shortcuts</code> (Edge) or{' '}
@@ -179,7 +191,9 @@ export function App(): JSX.Element {
         <div className="toggle-row">
           <span className="toggle-label">
             <strong>Log level</strong>
-            <span className="desc">Controls console logging verbosity. No sensitive data is logged.</span>
+            <span className="desc">
+              Controls console logging verbosity. No sensitive data is logged.
+            </span>
           </span>
           <select
             value={settings.logLevel}
@@ -193,6 +207,21 @@ export function App(): JSX.Element {
             ))}
           </select>
         </div>
+      </section>
+
+      <section className="section">
+        <h2>Privacy</h2>
+        <p>
+          Build metadata and settings are stored locally in this browser profile. Requests go to
+          your selected Azure DevOps organizations; no usage analytics are sent to the developer.
+        </p>
+        <a
+          href="https://github.com/ajalex114/ado-pipeline-tracker/blob/main/PRIVACY_POLICY.md"
+          target="_blank"
+          rel="noreferrer"
+        >
+          Read the privacy policy
+        </a>
       </section>
 
       <div className="saved">{saved ? 'Saved ✓' : ''}</div>
